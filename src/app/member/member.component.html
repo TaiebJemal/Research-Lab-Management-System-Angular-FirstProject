@@ -1,0 +1,70 @@
+<p>member works!</p>
+<!--<table border="2" style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; background-color: #f8f9fa; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+    <thead>
+        <tr style="background-color: #007bff; color: white; font-weight: bold; text-align: left; border-bottom: 2px solid #0056b3;">
+            <td style="padding: 12px; border: 1px solid #ddd;">ID</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">Cin</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">Name</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">Cv</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">Type</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">Created Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let element of dataSource" style="background-color: #fff; transition: 0.3s;" onmouseover="this.style.backgroundColor='#e9ecef';" onmouseout="this.style.backgroundColor='#fff';">
+            <td style="padding: 12px; border: 1px solid #ddd;">{{ element.id}}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">{{ element.cin}}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">{{ element.name}}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;"></td>
+            <td style="padding: 12px; border: 1px solid #ddd;">{{ element.type}}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">{{ element.createdDate}}</td>
+        </tr>
+    </tbody>
+</table>-->
+<button routerLink="/create">Create New</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="cin">
+      <th mat-header-cell *matHeaderCellDef> Cin </th>
+      <td mat-cell *matCellDef="let element"> {{element.cin}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+    <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef> CreatedDate </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      </ng-container>
+    <ng-container matColumnDef="icon" >
+        <th mat-header-cell *matHeaderCellDef> CreatedDate </th>
+        <td mat-cell *matCellDef="let element"> 
+          <button routerLink="/edit/{{element.id}}"><mat-icon > edit </mat-icon></button>
+            <button (click)="delete(element.id)"><mat-icon > delete </mat-icon></button>
+        </td>
+
+   
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
